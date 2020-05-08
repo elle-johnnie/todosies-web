@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class CreateProject extends Component {
     state = {
         title: '',
-        content: ''
+        details: ''
     }
     handleChange = (e) => {
         this.setState({
@@ -24,8 +24,8 @@ export default class CreateProject extends Component {
                     <input type="text" id="title" onChange={this.handleChange}/>
                 </div>
                 <div className="input-field">
-                    <label htmlFor="content">Project Content</label>
-                    <textarea id="content"  className="materalize-textarea" onChange={this.handleChange}></textarea>
+                    <textarea id="details" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                    <label htmlFor="details">Project Details</label>
                 </div>
                 <div className="input-field">
                     <button className="btn pink">Create</button>
