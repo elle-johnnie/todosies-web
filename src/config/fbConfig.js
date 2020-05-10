@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-const firebaseConfig = {
+const config = {
     apiKey: "AIzaSyAgrhJCaqxjf9JqtY4sXaI9m0GjbzcVBUo",
     authDomain: "todosies-web.firebaseapp.com",
     databaseURL: "https://todosies-web.firebaseio.com",
@@ -13,8 +13,7 @@ const firebaseConfig = {
     measurementId: "G-80JJ3YGN8V"
   };
 
-  firebase.initializeApp(firebaseConfig);
-  firebase.firestore().settings({ timestampsInSnapshots: true })
+  firebase.initializeApp(config);
 
-
+  
   export default firebase;

@@ -1,20 +1,45 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware } from 'redux'
-import rootReducer from './Store/Reducers/RootReducer'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { createStore, applyMiddleware, compose } from "redux";
+import rootReducer from "./Store/Reducers/RootReducer";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import {
+  reduxFirestore,
+  getFirestore,
+  createFirestoreInstance
+} from "redux-firestore";
+import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
+import fbConfig from "./config/fbConfig";
+import firebase from "firebase/app";
 
-//  appply thunk middleware to enhance store functionality 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+
+//  apply thunk middleware to enhance store functionality
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
+    reduxFirestore(fbConfig) // redux bindings for firestore
+  )
+);
+
+
+const rrfProps = {
+  firebase,
+  config: fbConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+};
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

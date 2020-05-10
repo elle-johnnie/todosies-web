@@ -1,3 +1,4 @@
+
 const intiState = {
     projects: [
         {id: '1', title: 'help me find peach', content: 'blah blah blah'},
@@ -11,8 +12,13 @@ const projectReducer = (state=intiState, action) => {
         // detect action type to determine how to handle each case
         case 'CREATE_PROJECT':
             console.log('created project', action.project);
+            return state;
+        case 'CREATE_PROJECT_ERROR':
+            console.log('create project error', action.err);
+            return state;
+        default:
+            return state;
     }
-    return state;
 };
 
 export default projectReducer
