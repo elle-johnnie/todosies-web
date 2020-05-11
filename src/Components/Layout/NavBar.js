@@ -5,9 +5,9 @@ import NoAuthLinks from './NoAuthLinks'
 import { connect } from 'react-redux'
 
 const NavBar = (props) => {
-    const { auth } = props;
-    // console.log(auth);
-    const links = auth.uid ? <AuthLinks /> :  <NoAuthLinks />
+    const { auth, profile } = props;
+    console.log(auth);
+    const links = auth.uid ? <AuthLinks profile={profile}/> :  <NoAuthLinks />
     return(
         <nav className="nav wrapper grey darken-2">
             <div className="container">
@@ -20,7 +20,8 @@ const NavBar = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 

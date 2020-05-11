@@ -8,7 +8,7 @@ const AuthLinks = (props) => {
        <ul className="right">
            <li><NavLink className="btn green" to='/create'>New Project</NavLink></li>
            <li><button className="btn grey" onClick={props.signOut}>Log Out</button></li>
-           <li><NavLink to='/' className="btn btn-floating pink">LJ</NavLink></li>
+           <li><NavLink to='/' className="btn btn-floating pink">{props.profile.initials}</NavLink></li>
        </ul>
     )
 }

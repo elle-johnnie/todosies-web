@@ -13,8 +13,7 @@ import {
   createFirestoreInstance
 } from "redux-firestore";
 import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
-import fbConfig from "./config/fbConfig";
-import firebase from "firebase/app";
+import firebase from "./config/fbConfig";
 
 
 //  apply thunk middleware to enhance store functionality
@@ -22,7 +21,7 @@ const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
-    reduxFirestore(fbConfig) // redux bindings for firestore
+    reduxFirestore(firebase) // redux bindings for firestore
   )
 );
 
