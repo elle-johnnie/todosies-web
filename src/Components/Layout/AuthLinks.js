@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapDispatchToProps)(AuthLinks)
+export default connect(null, mapDispatchToProps)(AuthLinks)
