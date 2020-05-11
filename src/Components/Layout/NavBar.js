@@ -12,7 +12,7 @@ const NavBar = (props) => {
         <nav className="nav wrapper grey darken-2">
             <div className="container">
                 <Link to='/' className='brand-logo'>Todosies</Link>
-                { links }
+                { auth.isLoaded && links }
             </div>
         </nav>
     )
