@@ -26,10 +26,16 @@ const store = createStore(
   )
 );
 
+// Create config for rrfProps object. We need this to pass it in the ReactReduxFirebaseProvider component
+const rrfConfig = {
+  useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
+  userProfile: 'users',
+  attachAuthIsReady: true,
+};
 
 const rrfProps = {
   firebase,
-  config: fbConfig,
+  config: rrfConfig,
   dispatch: store.dispatch,
   createFirestoreInstance
 };
